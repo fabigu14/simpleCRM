@@ -1,3 +1,7 @@
+mat-card {
+    padding: 16px 0;
+}
+
 .add-user-btn {
     position: absolute;
     bottom: 56px;
@@ -7,10 +11,36 @@
 .user-table {
     width: 100%;
     font-weight: 500;
-    th {
-        font-size: 18px;
-        font-weight: 500;
-        text-align: left;
-        color: #00000061;
+    border-collapse: collapse;
+    tr {
+        border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+        &:last-child {
+            border-bottom: unset;
+        }
+        &:hover {
+            cursor: pointer;
+            background-color: #8080801e;
+        }
+        &:first-child {
+            &:hover {
+                cursor: unset;
+                background-color: unset;
+            }
+        }
+        td {
+            height: 48px;
+            &:first-child {
+                padding-left: 16px;
+            }
+        }
+        th {
+            font-size: 18px;
+            font-weight: 500;
+            text-align: left;
+            color: #00000061;
+            &:first-child {
+                padding-left: 16px;
+            }
+        }
     }
 }
