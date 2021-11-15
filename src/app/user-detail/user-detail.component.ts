@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.model';
 import { AddressDialogComponent } from '../address-dialog/address-dialog.component';
+import { EditUserDetailDialogComponent } from '../edit-user-detail-dialog/edit-user-detail-dialog.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,30 +13,42 @@ import { AddressDialogComponent } from '../address-dialog/address-dialog.compone
 })
 export class UserDetailComponent implements OnInit {
 
-  routerId = '';
+  userId = '';
   user: User = new User();
 
-  constructor(public dialog: MatDialog, private route: ActivatedRoute, private firestore: AngularFirestore) { }
+  constructor(public dialog: MatDialog,
+     private route: ActivatedRoute, 
+     private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
-      this.routerId = paramMap.get('id');
-      console.log(this.routerId);
+      this.userId = paramMap.get('id');
+      console.log(this.userId);
       this.getUser();
     })
   }
 
   getUser() {
+    
     this.firestore
       .collection('users')
-      .doc(this.routerId)
+      .doc(this.userId)
       .valueChanges()
       .subscribe((user: any) => {
         this.user = new User(user);
+        console.log(this.user);
       })
   }
 
   openAddressDialog(){
-    this.dialog.open(AddressDialogComponent);
+    const dialog = this.dialog.open(AddressDialogComponent);
+    dialog.componentInstance.user = new User(this.user.toJson());
+    dialog.componentInstance.userId = this.userId;
+  }
+
+  openUserDetailDialog(){
+    const dialog = this.dialog.open(EditUserDetailDialogComponent);
+    dialog.componentInstance.user = new User(this.user.toJson());
+    dialog.componentInstance.userId = this.userId;
   }
 }

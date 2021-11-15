@@ -25,3 +25,19 @@ body {
 .full-width {
     width: 100%;
 }
+
+.mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-user-wrap {
+    position: relative;
+    mat-progress-bar {
+        position: absolute;
+        width: calc(100% + 48px);
+        top: -24px;
+        left: -24px;
+        right: -24px;
+    }
+}

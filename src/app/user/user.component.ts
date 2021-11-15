@@ -21,7 +21,6 @@ export class UserComponent implements OnInit {
     .valueChanges({idField: 'userId'})
     .subscribe((changes: any) =>{
       this.users = changes;
-      console.log(this.users);
       
     })
   }

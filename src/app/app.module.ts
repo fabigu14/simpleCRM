@@ -24,6 +24,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { AddressDialogComponent } from './address-dialog/address-dialog.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { EditUserDetailDialogComponent } from './edit-user-detail-dialog/edit-user-detail-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { AddressDialogComponent } from './address-dialog/address-dialog.componen
     UserComponent,
     DialogAddUserComponent,
     UserDetailComponent,
-    AddressDialogComponent
+    AddressDialogComponent,
+    EditUserDetailDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { AddressDialogComponent } from './address-dialog/address-dialog.componen
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
