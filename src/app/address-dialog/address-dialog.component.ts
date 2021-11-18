@@ -10,7 +10,7 @@ import { User } from 'src/models/user.model';
 })
 export class AddressDialogComponent implements OnInit {
 
-  user: User;
+  user: User = new User();
   userId: string;
   loading = false;
 
